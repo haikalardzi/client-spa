@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    /* TODO: Add color pallete */
+    /* --primary: #292629;
+    --secondary: #4863D8;
+    --tertiary: #F9F6D5;
+    --quaternary: #D6E9B0;
+    --quinary: #F4602C; */
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --foreground-rgb: 255, 255, 255;
+        --background-start-rgb: 0, 0, 0;
+        --background-end-rgb: 0, 0, 0;
+    }
+}
+body {
+    color: var(--tertiary);
+    /* background: linear-gradient(to bottom, var(--primary), var(--secondary)); */
+    /* background-color: #222536; */
+    background-image: linear-gradient(to bottom, #000000 40%, #30344d);
+    margin: 0;
+
+}
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+.container{
+    min-width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
