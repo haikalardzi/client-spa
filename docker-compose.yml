@@ -2,6 +2,7 @@ version: '3.3'
 services:
   client-spa:
     container_name: client_spa
-    build: .
+    build:
+      dockerfile: Dockerfile
     ports:
       - 3000:3000
