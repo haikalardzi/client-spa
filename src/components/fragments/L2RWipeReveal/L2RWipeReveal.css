@@ -1,0 +1,12 @@
+@keyframes L2RWipeReveal {
+    0% {
+        clip-path: inset(0 100% 0 0);
+    }
+    100% {
+    clip-path: inset(0 0 0 0);
+    }
+}
+
+.L2RWipeRevealElement {
+    animation: L2RWipeReveal 1s ease-in-out;
+}

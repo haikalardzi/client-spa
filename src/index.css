@@ -2,60 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-:root {
-  --primary: #AA1E1E;
-  --secondary: #3c00a0;
-  --tertiary: #fefefe;
-  --quaternary: #2ec4b6;
-  --quinary: #20a4f3;
-}
 @media (prefers-color-scheme: dark) {
   :root {
-      --foreground-rgb: 255, 255, 255;
-      --background-start-rgb: 0, 0, 0;
-      --background-end-rgb: 0, 0, 0;
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
   }
 }
-body {
-  color: var(--tertiary);
-  /* background: linear-gradient(to bottom, var(--primary), var(--secondary)); */
-  background-color:whitesmoke;
-  /* background-image: linear-gradient(to bottom, #000000 40%, #30344d); */
-  margin: 0;
 
+body {
+  @apply text-tertiary;
+  @apply bg-whitesmoke;
 }
 * {
-  font-family: 'Montserrat', sans-serif;
+  @apply font-montserrat;
 }
-.container{
-  min-width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 
+.container {
+  @apply min-w-full;
+  @apply min-h-screen;
+  @apply flex;
+  @apply flex-col;
+  @apply justify-between;
 }
 
 h1 {
-  font-size: 32px;
-  font-weight: bold;
-  color:#000000;
+  @apply text-2xl font-bold text-black;
 }
 
 p {
-  font-size: 16px;
-  color:#000000;
+  @apply text-base text-black;
 }
