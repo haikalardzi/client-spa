@@ -1,12 +1,12 @@
 // import Navbar from '../components/layouts/Navbar'
 import React from 'react'
 // import Image from 'next/image'
-import HomePageView from '../../view/HomePage'
+import AboutPageView from '../../view/AboutPage'
 
-const HomePage = () => {
+const AboutPage = () => {
   return (
-    <HomePageView />
+    <AboutPageView />
   )
 }
 
-export default HomePage
+export default AboutPage
