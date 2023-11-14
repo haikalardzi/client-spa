@@ -1,9 +1,10 @@
-// import Navbar from '../components/layouts/Navbar'
+// import NavigationBar from '../../components/NavigationBar'
 import React from 'react'
-import AboutPageView from '../../view/AboutPage'
+import AboutPageView from './view'
 
 const AboutPage = () => {
   return (
+    // <NavigationBar />
     <AboutPageView />
   )
 }

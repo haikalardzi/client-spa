@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client'
-import logo from '../../components/images/logo.svg'
-import "../../components/fragments/L2RWipeReveal/L2RWipeReveal.css"
+import logo from '../../../assets/images/logo.svg'
+import "../../../assets/styles/L2RWipeReveal/L2RWipeReveal.css"
 
 function AboutPageView() {
     return (
