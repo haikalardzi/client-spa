@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Layout from './components/Layout'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AboutPage from './pages/AboutPage';
 
 function App() {
@@ -20,7 +22,18 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <AboutPage />
+      
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<AboutPage />} />
+          {/* <Route path="myprofile" element={<MyProfile />} />
+          <Route path="product" element={<Product />} /> */}
+          {/* TODO: Make a not found page (like below) */}
+          {/* <Route path="*" element={<NoPage />} /> */}
+        </Route>
+      </Routes>
+    </BrowserRouter>
     </div>
   );
 }

@@ -1,11 +1,12 @@
-// import NavigationBar from '../../components/NavigationBar'
 import React from 'react'
 import AboutPageView from './view'
+import NavigationBar from '../../components/NavigationBar'
 
 const AboutPage = () => {
   return (
-    // <NavigationBar />
-    <AboutPageView />
+    <div>
+      <AboutPageView />
+    </div>
   )
 }
 

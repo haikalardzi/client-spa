@@ -6,7 +6,7 @@ import "../../../assets/styles/L2RWipeReveal/L2RWipeReveal.css"
 function AboutPageView() {
     return (
         <div className = 
-        "flex flex-col flex-nowrap justify-center items-center text-tertiary text-center py-5">
+        "flex flex-col flex-nowrap justify-center items-center text-tertiary text-center">
             <title>
                 About Saranghaengbok
             </title>
@@ -20,7 +20,7 @@ function AboutPageView() {
             <div 
             className="flex flex-col flex-nowrap justify-start text-left mx-auto px-6 max-w-screen-lg
             ">
-                <h1 className="py-5">
+                <h1 className="py-5 font-bold text-2xl">
                     About Saranghaengbok
                 </h1>
                 <p className ="py-5">
