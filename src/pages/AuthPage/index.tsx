@@ -15,9 +15,9 @@ const AuthPage = () => {
     }
     return (
         <div className="flex flex-col items-center gap-12">
-            <a href="/" className="w-[25%] my-12 ">
+            <a href="/" className="my-12 ">
                 <img src={logo}
-                className="bg-primary rounded"/>
+                className="drop-shadow-2xl"/>
             </a>
             <>
                 {view}
