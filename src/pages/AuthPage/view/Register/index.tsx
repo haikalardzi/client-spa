@@ -1,7 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom"
+import axiosInstance from "axios"
+import { getAuthData, setAuthToken } from "../../../../utils/auth";
+import { User } from "../../../../types/user";
+import { toast, ToastContainer } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
 
 const RegisterView = () => {
+    const navigate = useNavigate();
+    const [loading, setIsLoading] = useState(false);
+    const [registerCredentials, setRegisterCredentialsHook] = useState({
+        email : '',
+        username: '',
+        password: '',
+      });
+    function setRegisterCredentials(email?: any, username?: any, password?: any) {
+        setRegisterCredentialsHook(registerCredentials => ({...registerCredentials, email: email ? email : '', username: username ? username : '', password: password ? password : ''}))
+    }
+    const handleRegister = async () => {
+        setIsLoading(true);
+        try {
+            const response = await axiosInstance.post("/services/register", {
+                email: registerCredentials["email"],
+                username: registerCredentials["username"],
+                password: registerCredentials["password"],
+            });
+            if (response.status === 200) {
+                toast.success('Register Success!');
+                // success
+                setAuthToken(response.data.token);
+                const user: User = getAuthData();
+                setIsLoading(false);
+                // do something regarding user statuses
+                // bring back to main menu
+                navigate("/");
+            } else {
+                // not success
+                toast.error('Sorry, register failed')
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
         <div className="rounded ring-quaternary ring-1 shadow-2xl bg-white w-fit pb-4">
             <h1
@@ -52,6 +93,18 @@ const RegisterView = () => {
                     Already have an account? <strong><a href="/login">Login</a></strong>
                 </p>
             </form>
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
         </div>
     )
 }

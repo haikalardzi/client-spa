@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utils;
+
+@layer components {    
+    #popUpContainer h1 {
+        @apply px-4 py-6 text-3xl font-bold
+    }
+    #popUpContainer label {
+        @apply font-bold
+    }
+}

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import '../../assets/styles/Button/Button.css'
 
 const Popup = ({ isOpen, onClose, children } : any) => {
   useEffect(() => {
@@ -19,8 +20,14 @@ const Popup = ({ isOpen, onClose, children } : any) => {
     <>
       {isOpen && (
         <div className="fixed w-full h-full bg-[#2E3137]/70 flex justify-center items-center">
-          <div className="rounded ring-4 ring-quaternary bg-white">
+          <div 
+          id = "popUpContainer"
+          className="rounded ring-quaternary ring-1 shadow-2xl bg-white w-fit pb-4">
               {children}
+              <div className='flex flex-row-reverse'>
+                <button id='OKbtn'
+                className='btn-primary'>OK</button>
+              </div>
           </div>
         </div>
       )}

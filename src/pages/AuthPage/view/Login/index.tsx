@@ -1,6 +1,44 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client"
+import axiosInstance from "axios";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { getAuthData, setAuthToken } from "../../../../utils/auth";
+import { User } from "../../../../types/user";
 const LoginView = () => {
+    const navigate = useNavigate();
+    const [loading, setIsLoading] = useState(false);
+    const [loginCredentials, setLoginCredentialsHook] = useState({
+        username: '',
+        password: '',
+      });
+    function setLoginCredentials(email?: any, username?: any, password?: any) {
+        setLoginCredentialsHook(loginCredentials => ({...loginCredentials, username: username ? username : '', password: password ? password : ''}))
+    }
+    const handleLogin = async () => {
+        setIsLoading(true);
+        try {
+            const response = await axiosInstance.post("/services/login", {
+                username: loginCredentials["username"],
+                password: loginCredentials["password"],
+            });
+            if (response.status === 200) {
+                toast.success('Login Success!');
+                // success
+                setAuthToken(response.data.token);
+                const user: User = getAuthData();
+                setIsLoading(false);
+                // do something regarding user statuses
+                // bring back to main menu
+                navigate("/");
+            } else {
+                // not success
+                toast.error('Sorry, login failed')
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
     return (
         <div className="rounded ring-quaternary ring-1 shadow-2xl bg-white w-fit pb-4">
             <h1
@@ -36,7 +74,7 @@ const LoginView = () => {
                     Log In
                 </button>
                 <p>
-                    Don't have an account? <strong><a href="/register">Register</a></strong></p>
+                    Don't have an account? <strong><a href="/login">Login</a></strong></p>
             </form>
         </div>
     )
