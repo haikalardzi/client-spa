@@ -6,7 +6,7 @@ import "../../../assets/styles/L2RWipeReveal/L2RWipeReveal.css"
 function AboutPageView() {
     return (
         <div className = 
-        "flex flex-col flex-nowrap justify-center items-center text-tertiary text-center">
+        "flex flex-col flex-nowrap justify-center items-center text-tertiary text-center pt-14">
             <title>
                 About Saranghaengbok
             </title>

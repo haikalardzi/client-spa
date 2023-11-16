@@ -4,6 +4,6 @@
 
 @layer components {
   .btn-primary {
-    @apply hover:bg-black/[0.1] transition ease-in-out duration-150 p-1
+    @apply hover:backdrop-brightness-[70%] transition duration-150 p-1 text-center
   }
 }
