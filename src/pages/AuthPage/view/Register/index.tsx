@@ -60,7 +60,9 @@ const RegisterView = () => {
                 id="email"
                 className="ring-1 ring-black p-1 rounded invalid:ring-red-600 invalid:ring-2"
                 required
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                value={registerCredentials["email"]}
+                onChange={(e) => setRegisterCredentials(e.target.value, undefined,  undefined)}>
                 </input>
                 <label 
                 htmlFor="username"
@@ -71,6 +73,8 @@ const RegisterView = () => {
                 type="text" 
                 id="username"
                 className="ring-1 ring-black p-1 rounded"
+                value={registerCredentials["username"]}
+                onChange={(e) => setRegisterCredentials(undefined, e.target.value, undefined)}
                 required>
                 </input>
                 <label 
@@ -82,11 +86,14 @@ const RegisterView = () => {
                 type="password" 
                 id="password"
                 className="ring-1 ring-black p-1 rounded"
+                value={registerCredentials["password"]}
+                onChange={(e) => setRegisterCredentials(undefined, undefined, e.target.value)}
                 required>
                 </input>
                 <button
                 type="submit"
-                className="bg-secondary text-white rounded-full min-h-fit h-8 mx-6 my-4">
+                className="bg-secondary text-white rounded-full min-h-fit h-8 mx-6 my-4"
+                onClick={handleRegister}>
                     Register
                 </button>
                 <p>

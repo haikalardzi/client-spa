@@ -12,7 +12,7 @@ const LoginView = () => {
         username: '',
         password: '',
       });
-    function setLoginCredentials(email?: any, username?: any, password?: any) {
+    function setLoginCredentials(username?: any, password?: any) {
         setLoginCredentialsHook(loginCredentials => ({...loginCredentials, username: username ? username : '', password: password ? password : ''}))
     }
     const handleLogin = async () => {
@@ -55,6 +55,8 @@ const LoginView = () => {
                 type="text" 
                 id="username"
                 className="ring-1 ring-black p-1 rounded"
+                value={loginCredentials["username"]}
+                onChange={(e) => setLoginCredentials(e.target.value, undefined)}
                 required>
                 </input>
                 <label 
@@ -66,10 +68,13 @@ const LoginView = () => {
                 type="password" 
                 id="password"
                 className="ring-1 ring-black p-1 rounded"
+                value={loginCredentials["password"]}
+                onChange={(e) => setLoginCredentials(undefined, e.target.value)}
                 required>
                 </input>
                 <button
                 type="submit"
+                onClick={handleLogin}
                 className="bg-secondary text-white rounded-full min-h-fit h-8 mx-6 my-4">
                     Log In
                 </button>
