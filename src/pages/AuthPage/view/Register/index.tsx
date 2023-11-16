@@ -15,7 +15,16 @@ const RegisterView = () => {
         password: '',
       });
     function setRegisterCredentials(email?: any, username?: any, password?: any) {
-        setRegisterCredentialsHook(registerCredentials => ({...registerCredentials, email: email ? email : '', username: username ? username : '', password: password ? password : ''}))
+        setRegisterCredentialsHook(registerCredentials => ({...registerCredentials, email: email ? email : registerCredentials["email"], username: username ? username : registerCredentials["username"], password: password ? password : registerCredentials["password"]}))
+    }
+    function setRegisterEmail(email:any) {
+        setRegisterCredentialsHook(registerCredentials => ({...registerCredentials, email: email}))
+    }
+    function setRegisterUsername(username:any) {
+        setRegisterCredentialsHook(registerCredentials => ({...registerCredentials, username: username}))
+    }
+    function setRegisterPassword(password:any) {
+        setRegisterCredentialsHook(registerCredentials => ({...registerCredentials, password: password}))
     }
     const handleRegister = async () => {
         setIsLoading(true);
@@ -39,7 +48,7 @@ const RegisterView = () => {
                 toast.error('Sorry, register failed')
             }
         } catch (error) {
-            console.log(error)
+            alert(error)
         }
     }
 
@@ -62,7 +71,7 @@ const RegisterView = () => {
                 required
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 value={registerCredentials["email"]}
-                onChange={(e) => setRegisterCredentials(e.target.value, undefined,  undefined)}>
+                onChange={(e) => setRegisterEmail(e.target.value)}>
                 </input>
                 <label 
                 htmlFor="username"
@@ -74,7 +83,7 @@ const RegisterView = () => {
                 id="username"
                 className="ring-1 ring-black p-1 rounded"
                 value={registerCredentials["username"]}
-                onChange={(e) => setRegisterCredentials(undefined, e.target.value, undefined)}
+                onChange={(e) => setRegisterUsername(e.target.value)}
                 required>
                 </input>
                 <label 
@@ -87,7 +96,7 @@ const RegisterView = () => {
                 id="password"
                 className="ring-1 ring-black p-1 rounded"
                 value={registerCredentials["password"]}
-                onChange={(e) => setRegisterCredentials(undefined, undefined, e.target.value)}
+                onChange={(e) => setRegisterPassword(e.target.value)}
                 required>
                 </input>
                 <button

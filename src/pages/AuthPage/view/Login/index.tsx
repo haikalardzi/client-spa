@@ -13,7 +13,13 @@ const LoginView = () => {
         password: '',
       });
     function setLoginCredentials(username?: any, password?: any) {
-        setLoginCredentialsHook(loginCredentials => ({...loginCredentials, username: username ? username : '', password: password ? password : ''}))
+        setLoginCredentialsHook(loginCredentials => ({...loginCredentials, username: username ? username : loginCredentials["username"], password: password ? password : loginCredentials["password"]}))
+    }
+    function setLoginUsername(username: any) {
+        setLoginCredentialsHook(loginCredentials => ({...loginCredentials, username:username}))
+    }
+    function setLoginPassword(password: any) {
+        setLoginCredentialsHook(loginCredentials => ({...loginCredentials, password:password}))
     }
     const handleLogin = async () => {
         setIsLoading(true);
@@ -36,7 +42,7 @@ const LoginView = () => {
                 toast.error('Sorry, login failed')
             }
         } catch (error) {
-            console.log(error)
+            alert(error)
         }
     }
     return (
@@ -56,7 +62,7 @@ const LoginView = () => {
                 id="username"
                 className="ring-1 ring-black p-1 rounded"
                 value={loginCredentials["username"]}
-                onChange={(e) => setLoginCredentials(e.target.value, undefined)}
+                onChange={(e) => setLoginUsername(e.target.value)}
                 required>
                 </input>
                 <label 
@@ -69,7 +75,7 @@ const LoginView = () => {
                 id="password"
                 className="ring-1 ring-black p-1 rounded"
                 value={loginCredentials["password"]}
-                onChange={(e) => setLoginCredentials(undefined, e.target.value)}
+                onChange={(e) => setLoginPassword(e.target.value)}
                 required>
                 </input>
                 <button
@@ -79,7 +85,7 @@ const LoginView = () => {
                     Log In
                 </button>
                 <p>
-                    Don't have an account? <strong><a href="/login">Login</a></strong></p>
+                    Don't have an account? <strong><a href="/register">Register</a></strong></p>
             </form>
         </div>
     )
