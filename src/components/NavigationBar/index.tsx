@@ -31,29 +31,29 @@ const NavigationBar = () => {
                 <div className="sm:grow max-w-sm bg-black/10 rounded-full text-center ml-auto sm:mx-auto btn-primary">
                     <div className="text-white gap-1 flex">
                         <MagnifyingGlassIcon className="text-inherit inline h-6 w-6"/>
-                        <input className="placeholder:italic bg-transparent placeholder:text-inherit text-inherit inline grow" placeholder="Search..">
+                        <input className="placeholder:italic bg-transparent placeholder:text-inherit inline grow" placeholder="Search..">
                         </input>
                     </div>
                 </div>
                 <div className="sm:ml-auto btn-primary text-tertiary">
                     <a>
                         <BookOpenIcon className="h-6 w-6 inline"/>
-                        <p className="text-inherit hidden md:inline">Catalog</p>
+                        <p className="text-inherit hidden min-[784px]:inline">Catalog</p>
                     </a>
                 </div>
                 <div className="btn-primary text-tertiary">
                     <a>           
                         <ShoppingCartIcon className="h-6 w-6 inline"/>
-                        <p className="text-inherit hidden md:inline">Cart</p>    
+                        <p className="text-inherit hidden min-[784px]:inline">Cart</p>    
                     </a>
                 </div>
                 <div className="btn-primary text-tertiary">
                     <button>
                         <UserIcon className="h-6 w-6 inline"/>
-                        <p className="text-inherit hidden md:inline">Account</p>
+                        <p className="text-inherit hidden min-[784px]:inline">Account</p>
                     </button>
                 </div>
-                <div className="bg-secondary btn-primary text-tertiary rounded px-4 hover:bg-quinary">
+                <div className="bg-secondary btn-primary text-tertiary rounded px-4 hover:bg-quinary truncate">
                     <a href="/login">
                         <p className="text-inherit inline">Log In</p>
                     </a>
