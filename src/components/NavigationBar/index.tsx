@@ -36,7 +36,7 @@ const NavigationBar = () => {
                     </div>
                 </div>
                 <div className="sm:ml-auto btn-primary text-tertiary">
-                    <a>
+                    <a href="/catalog">
                         <BookOpenIcon className="h-6 w-6 inline"/>
                         <p className="text-inherit hidden min-[784px]:inline">Catalog</p>
                     </a>

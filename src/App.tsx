@@ -5,6 +5,7 @@ import Layout from './components/Layout'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AboutPage from './pages/AboutPage';
 import AuthPage from './pages/AuthPage';
+import CatalogPage from './pages/CatalogPage';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route index element={<AboutPage />} />
           <Route path="login" element={<AuthPage />} />
           <Route path="register" element={<AuthPage/>}/>
+          <Route path="catalog" element={<CatalogPage />}/>
           {/* <Route path="myprofile" element={<MyProfile />} />
           <Route path="product" element={<Product />} /> */}
           {/* TODO: Make a not found page (like below) */}
