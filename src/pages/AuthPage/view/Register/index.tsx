@@ -1,45 +1,43 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom"
-import axiosInstance from "axios"
-import { getAuthData, setAuthToken } from "../../../../utils/auth";
-import { User } from "../../../../types/user";
+import { axiosInstance } from "../../../../utils/axios"
+import {setAuthToken } from "../../../../utils/auth";
 import { toast, ToastContainer } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
 
 const RegisterView = () => {
     const navigate = useNavigate();
-    const [loading, setIsLoading] = useState(false);
     const [registerCredentials, setRegisterCredentialsHook] = useState({
         email : '',
         username: '',
         password: '',
       });
-    function setRegisterCredentials(email?: any, username?: any, password?: any) {
-        setRegisterCredentialsHook(registerCredentials => ({...registerCredentials, email: email ? email : registerCredentials["email"], username: username ? username : registerCredentials["username"], password: password ? password : registerCredentials["password"]}))
+    function setRegisterEmail(email:string) {
+        setRegisterCredentialsHook(registerCredentials => ({...registerCredentials, email: email}));
+        console.log(email);
     }
-    function setRegisterEmail(email:any) {
-        setRegisterCredentialsHook(registerCredentials => ({...registerCredentials, email: email}))
-    }
-    function setRegisterUsername(username:any) {
+    function setRegisterUsername(username:string) {
         setRegisterCredentialsHook(registerCredentials => ({...registerCredentials, username: username}))
+        console.log(username);
     }
-    function setRegisterPassword(password:any) {
+    function setRegisterPassword(password:string) {
         setRegisterCredentialsHook(registerCredentials => ({...registerCredentials, password: password}))
+        console.log(password);
     }
     const handleRegister = async () => {
-        setIsLoading(true);
+        
         try {
-            const response = await axiosInstance.post("/services/register", {
-                email: registerCredentials["email"],
-                username: registerCredentials["username"],
+            const response = await axiosInstance.post("register", {
+                username: registerCredentials["username"].toLowerCase(),
+                email: registerCredentials["email"].toLowerCase(),
                 password: registerCredentials["password"],
             });
+            console.log(response.data);
+            const data = response.data;
             if (response.status === 200) {
                 toast.success('Register Success!');
                 // success
-                setAuthToken(response.data.token);
-                const user: User = getAuthData();
-                setIsLoading(false);
+                setAuthToken(data.token);
+                
                 // do something regarding user statuses
                 // bring back to main menu
                 navigate("/");
@@ -69,8 +67,6 @@ const RegisterView = () => {
                 id="email"
                 className="ring-1 ring-black p-1 rounded invalid:ring-red-600 invalid:ring-2"
                 required
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                value={registerCredentials["email"]}
                 onChange={(e) => setRegisterEmail(e.target.value)}>
                 </input>
                 <label 

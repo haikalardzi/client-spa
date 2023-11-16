@@ -1,20 +1,20 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom/client"
-import axiosInstance from "axios";
+// import ReactDOM from "react-dom/client"
+import { axiosInstance } from "../../../../utils/axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { getAuthData, setAuthToken } from "../../../../utils/auth";
-import { User } from "../../../../types/user";
+import { setAuthToken } from "../../../../utils/auth";
+// import { User } from "../../../../types/user";
 const LoginView = () => {
     const navigate = useNavigate();
-    const [loading, setIsLoading] = useState(false);
+    // const [loading, setIsLoading] = useState(false);
     const [loginCredentials, setLoginCredentialsHook] = useState({
         username: '',
         password: '',
       });
-    function setLoginCredentials(username?: any, password?: any) {
-        setLoginCredentialsHook(loginCredentials => ({...loginCredentials, username: username ? username : loginCredentials["username"], password: password ? password : loginCredentials["password"]}))
-    }
+    // function setLoginCredentials(username?: any, password?: any) {
+    //     setLoginCredentialsHook(loginCredentials => ({...loginCredentials, username: username ? username : loginCredentials["username"], password: password ? password : loginCredentials["password"]}))
+    // }
     function setLoginUsername(username: any) {
         setLoginCredentialsHook(loginCredentials => ({...loginCredentials, username:username}))
     }
@@ -22,18 +22,20 @@ const LoginView = () => {
         setLoginCredentialsHook(loginCredentials => ({...loginCredentials, password:password}))
     }
     const handleLogin = async () => {
-        setIsLoading(true);
+        // setIsLoading(true);
         try {
-            const response = await axiosInstance.post("/services/login", {
+            const response = await axiosInstance.post("login", {
                 username: loginCredentials["username"],
                 password: loginCredentials["password"],
             });
+            console.log(response.config.baseURL?.toString());
+            const data = JSON.parse(response.data);
             if (response.status === 200) {
                 toast.success('Login Success!');
                 // success
-                setAuthToken(response.data.token);
-                const user: User = getAuthData();
-                setIsLoading(false);
+                setAuthToken(data.token);
+                // const user: User = getAuthData();
+                // setIsLoading(false);
                 // do something regarding user statuses
                 // bring back to main menu
                 navigate("/");
