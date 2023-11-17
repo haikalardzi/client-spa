@@ -23,8 +23,9 @@ const RegisterView = () => {
         setRegisterCredentialsHook(registerCredentials => ({...registerCredentials, password: password}))
         console.log(password);
     }
-    const handleRegister = async () => {
-        
+    // FIXME: Register is error because Axios connection error
+    const handleRegister = async (e:any) => {
+        e.preventDefault()
         try {
             const response = await axiosInstance.post("register", {
                 username: registerCredentials["username"].toLowerCase(),
@@ -56,49 +57,51 @@ const RegisterView = () => {
             className="px-4 py-6 text-3xl font-bold">
                 Register
             </h1>
-            <form className="text-black flex flex-col px-12 gap-4">
+            <form
+            onSubmit={handleRegister} 
+            className="text-black flex flex-col px-12 gap-4">
                 <label 
                 htmlFor="email"
                 className="font-bold">
                     Email
                 </label>
-                <input 
-                type="text" 
-                id="email"
-                className="ring-1 ring-black p-1 rounded invalid:ring-red-600 invalid:ring-2"
-                required
-                onChange={(e) => setRegisterEmail(e.target.value)}>
-                </input>
+                    <input 
+                    type="text" 
+                    id="email"
+                    className="ring-1 ring-black p-1 rounded invalid:ring-red-600 invalid:ring-2"
+                    required
+                    onChange={(e) => setRegisterEmail(e.target.value)}>
+                    </input>
                 <label 
                 htmlFor="username"
                 className="font-bold">
                     Username
                 </label>
-                <input 
-                type="text" 
-                id="username"
-                className="ring-1 ring-black p-1 rounded"
-                value={registerCredentials["username"]}
-                onChange={(e) => setRegisterUsername(e.target.value)}
-                required>
-                </input>
+                    <input 
+                    type="text" 
+                    id="username"
+                    className="ring-1 ring-black p-1 rounded"
+                    value={registerCredentials["username"]}
+                    onChange={(e) => setRegisterUsername(e.target.value)}
+                    required>
+                    </input>
                 <label 
                 htmlFor="password"
                 className="font-bold">
                     Password
                 </label>
-                <input 
-                type="password" 
-                id="password"
-                className="ring-1 ring-black p-1 rounded"
-                value={registerCredentials["password"]}
-                onChange={(e) => setRegisterPassword(e.target.value)}
-                required>
-                </input>
+                    <input 
+                    type="password" 
+                    id="password"
+                    className="ring-1 ring-black p-1 rounded"
+                    value={registerCredentials["password"]}
+                    onChange={(e) => setRegisterPassword(e.target.value)}
+                    required>
+                    </input>
                 <button
                 type="submit"
                 className="bg-secondary text-white rounded-full min-h-fit h-8 mx-6 my-4"
-                onClick={handleRegister}>
+                >
                     Register
                 </button>
                 <p>

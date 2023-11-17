@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import ReactDOM from "react-dom/client"
 import { axiosInstance } from "../../../../utils/axios";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { setAuthToken } from "../../../../utils/auth";
 // import { User } from "../../../../types/user";
 const LoginView = () => {
@@ -21,7 +21,8 @@ const LoginView = () => {
     function setLoginPassword(password: any) {
         setLoginCredentialsHook(loginCredentials => ({...loginCredentials, password:password}))
     }
-    const handleLogin = async () => {
+    const handleLogin = async (e:any) => {
+        e.preventDefault();
         // setIsLoading(true);
         try {
             const response = await axiosInstance.post("login", {
@@ -38,6 +39,7 @@ const LoginView = () => {
                 // setIsLoading(false);
                 // do something regarding user statuses
                 // bring back to main menu
+                
                 navigate("/");
             } else {
                 // not success
@@ -53,7 +55,9 @@ const LoginView = () => {
             className="px-4 py-6 text-3xl font-bold">
                 Login
             </h1>
-            <form className="text-black flex flex-col px-12 gap-2">
+            <form 
+            onSubmit={handleLogin}
+            className="text-black flex flex-col px-12 gap-2">
                 <label 
                 htmlFor="username"
                 className="font-bold">
@@ -82,13 +86,24 @@ const LoginView = () => {
                 </input>
                 <button
                 type="submit"
-                onClick={handleLogin}
                 className="bg-secondary text-white rounded-full min-h-fit h-8 mx-6 my-4">
                     Log In
                 </button>
                 <p>
                     Don't have an account? <strong><a href="/register">Register</a></strong></p>
             </form>
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
         </div>
     )
 }
