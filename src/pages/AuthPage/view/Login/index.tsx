@@ -41,8 +41,8 @@ const LoginView = () => {
                     // setIsLoading(false);
                     // do something regarding user statuses
                     // bring back to main menu
-                    
                     navigate("/");
+                    window.location.reload();
                 }
             } else {
                 // not success
