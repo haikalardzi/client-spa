@@ -14,7 +14,7 @@ const CatalogPage = () => {
             description : "no_description",
             price : 0,
             quantity : 0,
-            seller_username : "no_seller " + (index + 1)
+            seller_username : "seller_" + (index + 1)
         }
         dummyArr.push(elem);
     }

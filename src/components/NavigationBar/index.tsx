@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import ReactDOM from 'react-dom/client';
-import { Bars3Icon , ShoppingCartIcon, UserIcon, MagnifyingGlassIcon, BookOpenIcon} from '@heroicons/react/24/solid';
+import { Bars3Icon , ShoppingCartIcon, UserIcon, BookOpenIcon } from '@heroicons/react/24/solid';
 import logo from '../../assets/images/logo.svg';
 import '../../assets/styles/Button/Button.css'
 import { useLocation } from "react-router-dom";
+import SearchBar from "./SearchBar";
 
 const NavigationBar = () => {
     const location = useLocation();
     const NavbarExcludedPages = ["/login", "/register"]
     if (NavbarExcludedPages.indexOf(location.pathname) != -1) {
         return null;
+    }
+    function searchFilterMenu() {
+
     }
     return (
         <>
@@ -29,11 +33,7 @@ const NavigationBar = () => {
                     </a>
                 </div>
                 <div className="sm:grow max-w-sm bg-black/10 rounded-full text-center ml-auto sm:mx-auto btn-primary">
-                    <div className="text-white gap-1 flex">
-                        <MagnifyingGlassIcon className="text-inherit inline h-6 w-6"/>
-                        <input className="placeholder:italic bg-transparent placeholder:text-inherit inline grow" placeholder="Search..">
-                        </input>
-                    </div>
+                    <SearchBar />
                 </div>
                 <div className="sm:ml-auto btn-primary text-tertiary">
                     <a href="/catalog">
