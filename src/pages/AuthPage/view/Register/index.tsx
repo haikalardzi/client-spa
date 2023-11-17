@@ -28,20 +28,22 @@ const RegisterView = () => {
         e.preventDefault()
         try {
             const response = await axiosInstance.post("register", {
-                username: registerCredentials["username"].toLowerCase(),
-                email: registerCredentials["email"].toLowerCase(),
+                username: registerCredentials["username"],
+                email: registerCredentials["email"],
                 password: registerCredentials["password"],
             });
             console.log(response.data);
             const data = response.data;
             if (response.status === 200) {
-                toast.success('Register Success!');
-                // success
-                setAuthToken(data.token);
-                
-                // do something regarding user statuses
-                // bring back to main menu
-                navigate("/");
+                if (!data.data){
+                    toast.success('Register Success!');
+                    // success
+                    setAuthToken(data.token);
+                    
+                    // do something regarding user statuses
+                    // bring back to main menu
+                    navigate("/");
+                }
             } else {
                 // not success
                 toast.error('Sorry, register failed')
