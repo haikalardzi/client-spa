@@ -23,7 +23,6 @@ const RegisterView = () => {
         setRegisterCredentialsHook(registerCredentials => ({...registerCredentials, password: password}))
         console.log(password);
     }
-    // FIXME: Register is error because Axios connection error
     const handleRegister = async (e:any) => {
         e.preventDefault()
         try {
