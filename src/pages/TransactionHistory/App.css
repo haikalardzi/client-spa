@@ -1,0 +1,24 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.container {
+    @apply mx-auto p-4;
+  }
+  
+  .table {
+    @apply w-full border-collapse mt-4;
+  }
+  
+  .th, .td {
+    @apply border p-2 text-left;
+  }
+
+  .td{
+    @apply text-black
+  }
+  
+  .th {
+    @apply bg-black;
+  }
+  
