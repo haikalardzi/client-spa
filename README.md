@@ -32,3 +32,11 @@ docker compose up --build -d
 ```
 localhost:3000
 ```
+
+## Pembagian Tugas
+
+### React
+Frontend Halaman Utama : 13521009
+Frontend Halaman Login/Register : 13521009
+Frontend Halaman Catalog : 13521009
+Frontend Navigation Bar + Side Bar : 13521009
