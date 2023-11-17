@@ -29,18 +29,21 @@ const LoginView = () => {
                 username: loginCredentials["username"],
                 password: loginCredentials["password"],
             });
-            console.log(response.config.baseURL?.toString());
-            const data = JSON.parse(response.data);
+            console.log(response);
+            const data = response.data;
+            console.log(data);
             if (response.status === 200) {
-                toast.success('Login Success!');
-                // success
-                setAuthToken(data.token);
-                // const user: User = getAuthData();
-                // setIsLoading(false);
-                // do something regarding user statuses
-                // bring back to main menu
-                
-                navigate("/");
+                if (data.isauthorized === true){
+                    toast.success('Login Success!');
+                    // success
+                    setAuthToken(data.token);
+                    // const user: User = getAuthData();
+                    // setIsLoading(false);
+                    // do something regarding user statuses
+                    // bring back to main menu
+                    
+                    navigate("/");
+                }
             } else {
                 // not success
                 toast.error('Sorry, login failed')
